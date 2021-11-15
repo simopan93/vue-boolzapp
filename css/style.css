@@ -2,12 +2,202 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.clearfix::after{
+  content: "";
+  display: table;
+  clear: both;
 }
 
 body {
   height: 100vh;
-  background: linear-gradient(rgba(36,151,136, .8),
+
+  background: 
+  linear-gradient(rgba(36,151,136, .8),
   rgba(36,151,136, 1) 15%, 
   rgba(218,219,212, .8) 15%, 
   rgba(218,219,212, 1));
+
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 800px;
+}
+
+.container {
+  width: 70%;
+  height: 95vh;
+  margin: auto;
+  background-color: white; /*DA TOGLIERE*/
+}
+
+.container .left,
+.container .right {
+  float: left;
+  height: 100%;
+}
+
+
+/*Box Avatar in comune per i due lati*/
+.container .left .box-user,
+.container .right .box-user {
+  height: 70px;
+  background-color: rgb(234, 234, 234);
+  padding: 0 10px;
+}
+
+
+.container .left .box-user  img,
+.container .right .box-user  img {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+/*Fine Blocco Avatar in comune*/
+
+
+
+/*BLOCCO SINISTRO*/
+.container .left {
+  width: 40%;
+}
+
+/*Box User*/
+
+.container .left .box-user {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-right: 1px solid rgba(0, 0, 0, .2);
+}
+
+.container .left .box-user .box-avatar {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-right: 10px;
+}
+
+.container .left .box-user .box-utilities {
+  text-align: right;
+  width: 50%;
+}
+
+.container .left .box-user .box-utilities .fas {
+  color: rgba(0, 0, 0, .5);
+  font-size: 1.2em;
+  margin: 0 5px;
+}
+
+/*Box Notifications*/
+
+.container .left .box-notifications {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #8EDAFD;
+  padding: 0 15px;
+}
+
+.container .left .box-notifications .fas {
+  font-size: 20px;
+  background-color: white;
+  padding:  12px 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.container .left .box-notifications .box-test p {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.container .left .box-notifications .box-test p.not-desktop {
+  color: rgba(0, 0, 0, .5);
+  text-decoration: underline;
+  font-size: 11px;
+}
+
+
+/*Input Search User*/
+
+.container .left .input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  background-color: #FAFAFA;
+}
+
+.container .left .box-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, .3);
+  padding: 0 8px;
+}
+
+.container .left .box-input .box-logo-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.container .left .box-input .box-logo-search .fas {
+  width: 10%;
+}
+
+.container .left .box-input .box-logo-search .fas:hover{
+  cursor: pointer;
+}
+
+.container .left .box-input .box-logo-search input {
+  border: none;
+  width: 90%;
+  padding: 2px;
+}
+
+
+/*List User*/
+.left .list-user{
+  height: calc(100% - 70px - 60px - 40px);
+  width: 95%;
+  border-right: 1px solid rgba(0, 0, 0, .2);  
+}
+
+.left .list-user .box-user {
+  height: 80px;
+}
+
+.left .list-user .box-user .box-avatar-other-user{
+  height: 100%;
+  width: 20%;
+}
+
+.left .list-user .box-user .box-name{
+  height: 100%;
+  width: 50%;
+}
+
+.left .list-user .box-user .box-date{
+  height: 100%;
+  width: 30%;
+}
+
+
+/*BLOCCO DESTRO*/
+.container .right {
+  width: 50%;
 }
