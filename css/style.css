@@ -44,7 +44,7 @@ body {
 
 
 /*Box Avatar in comune per i due lati*/
-.container .left .box-user,
+.container .left .box-my-user,
 .container .right .box-user {
   height: 70px;
   background-color: rgb(234, 234, 234);
@@ -52,8 +52,9 @@ body {
 }
 
 
-.container .left .box-user  img,
-.container .right .box-user  img {
+.container .left .box-my-user img,
+.container .left .box-user img,
+.container .right .box-user img {
   width: 40px;
   height: 40px;
   margin-right: 8px;
@@ -69,28 +70,29 @@ body {
   width: 40%;
 }
 
-/*Box User*/
+/*Box My User*/
 
-.container .left .box-user {
+.container .left .box-my-user {
   display: flex;
   align-items: center;
   width: 100%;
   border-right: 1px solid rgba(0, 0, 0, .2);
 }
 
-.container .left .box-user .box-avatar {
+.container .left .box-my-user .box-avatar {
   display: flex;
   align-items: center;
   width: 50%;
   margin-right: 10px;
 }
 
-.container .left .box-user .box-utilities {
+.container .left .box-my-user .box-utilities {
   text-align: right;
   width: 50%;
 }
 
-.container .left .box-user .box-utilities .fas {
+.container .left .box-my-user .box-utilities .fas,
+.container .right .box-user .box-utilities .fas {
   color: rgba(0, 0, 0, .5);
   font-size: 1.2em;
   margin: 0 5px;
@@ -171,33 +173,199 @@ body {
 
 
 /*List User*/
-.left .list-user{
+.container .left .list-user{
   height: calc(100% - 70px - 60px - 40px);
   width: 95%;
-  border-right: 1px solid rgba(0, 0, 0, .2);  
+  border-right: 1px solid rgba(0, 0, 0, .1);  
 }
 
-.left .list-user .box-user {
+.container .left .list-user .box-user {
+  display: flex;
   height: 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
-.left .list-user .box-user .box-avatar-other-user{
+.container .left .list-user .box-user:last-child {
+  border-bottom: none;
+}
+
+.container .left .list-user .box-user .box-avatar-other-user{
+  display: flex;
+  align-items: center;
   height: 100%;
   width: 20%;
 }
 
-.left .list-user .box-user .box-name{
-  height: 100%;
-  width: 50%;
+.container .left .list-user .box-user .box-avatar-other-user img {
+  height: 60px;
+  width: 60px;
 }
 
-.left .list-user .box-user .box-date{
+.container .left .list-user .box-user .box-name{
+  height: 100%;
+  width: 50%;
+  padding-top: 15px;
+}
+
+
+.container .left .list-user .box-user .box-name p {
+  font-size: 11px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, .4);
+  margin-top: 3px;
+}
+
+.container .left .list-user .box-user .box-name p::after{
+  content: "...";
+}
+
+.container .left .list-user .box-user .box-date{
   height: 100%;
   width: 30%;
+  padding-top: 15px;
+}
+
+.container .left .list-user .box-user .box-date span {
+  color: rgba(0, 0, 0, .4);
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.container .left .list-user .box-user:hover{
+  cursor: pointer;
+}
+
+.container .left .list-user .box-user.active{
+  background-color: #E9EAEA;
 }
 
 
 /*BLOCCO DESTRO*/
+/* Box User  */
 .container .right {
-  width: 50%;
+  width: 60%;
+  height: 100%;
+}
+
+.container .right .box-user {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.container .right .box-user .box-avatar {
+  display: flex;
+  align-items: center;
+  width: 70%;
+}
+
+.container .right .box-user .box-avatar .box-test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container .right .box-user .box-avatar p {
+  color: rgba(0, 0, 0, .5);
+  font-weight: bold;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.container .right .box-user .box-utilities {
+  width: 30%;
+  text-align: right;
+}
+
+
+/* Chat  */
+.container .right .chat {
+  height: calc(100% - 70px - 60px);
+  background-image: url(../img/mine.jpg);
+  padding: 30px;
+}
+
+.container .right .chat .message {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin: 5px 0;
+}
+
+
+.container .right .chat .message .content {
+  width: 45%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.container .right .chat .message.sent .content {
+  background-color: white;
+}
+
+.container .right .chat .message.received {
+  justify-content: right;
+}
+
+.container .right .chat .message.received .content {
+  background-color: #D5FBBA;
+}
+
+
+.container .right .chat .message span{
+  font-size: 13px;
+}
+
+.container .right .chat .message span.date {
+  position: absolute;
+  right: 5px;
+  bottom: 2px;
+  font-size: 8px;
+  color: lightgray
+}
+
+
+
+/* InsertTextMessage  */
+.container .right .text-message {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: #F4EEEA; 
+}
+
+.container .right .text-message .box-emoji,
+.container .right .text-message .box-input-message,
+.container .right .text-message .box-vocal-audio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.container .right .text-message .box-emoji{
+  width: 10%;
+}
+
+.container .right .text-message .box-input-message {
+  width: 80%;
+}
+
+.container .right .text-message .box-vocal-audio {
+  width: 10%;
+}
+
+.container .right .text-message .far.fa-smile,
+.container .right .text-message .fas.fa-microphone {
+  font-size: 20px;
+  color: grey;
+}
+
+.container .right .text-message .box-input-message input {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
 }
