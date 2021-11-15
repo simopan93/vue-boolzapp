@@ -19,8 +19,8 @@
         <section class="box-my-user">
 
           <div class="box-avatar">
-            <img src="img/avatar_1.jpg" alt="">
-            <h4>Nome Utente</h4>
+            <img :src= myUser.avatar alt="">
+            <h4>{{myUser.name}}</h4>
           </div>
           
           
@@ -58,10 +58,28 @@
         </section>
 
         <!--List User-->
-        <section class="list-user">
+        <section  class="list-user">
 
-          <div class="box-user active">
+          <div v-for="(el,index) in users" class="box-user active">
 
+            <div class="box-avatar-other-user">
+              <img :src= el.avatar alt="">
+            </div>
+
+            <div class="box-name">
+              <h4>{{el.name}}</h4>
+              <p>{{el.lastMessage}}</p>
+
+            </div>
+
+            <div class="box-date">
+              <span>{{el.dateLastMessage}}</span>
+            </div>
+          </div>
+
+
+
+          <!-- <div class="box-user">
             <div class="box-avatar-other-user">
               <img src="img/avatar_1.jpg" alt="">
             </div>
@@ -75,25 +93,7 @@
             <div class="box-date">
               <span>10/01/2020 14:25:45</span>
             </div>
-          </div>
-
-
-
-          <div class="box-user">
-            <div class="box-avatar-other-user">
-              <img src="img/avatar_1.jpg" alt="">
-            </div>
-
-            <div class="box-name">
-              <h4>Michele</h4>
-              <p>Tutto Fatto</p>
-
-            </div>
-
-            <div class="box-date">
-              <span>10/01/2020 14:25:45</span>
-            </div>
-          </div>
+          </div> -->
 
         </section>
 
@@ -109,9 +109,9 @@
         <section class="box-user">
 
           <div class="box-avatar">
-            <img src="img/avatar_1.jpg" alt="">
+            <img :src="myUser.avatar" alt="">
             <div class="box-text">
-              <h5>Michele</h5>
+              <h5>{{myUser.name}}</h5>
               <p>Ultimo accesso oggi alle 14:59</p>
             </div>
           </div> 
@@ -153,7 +153,7 @@
           </div>
 
           <div class="box-input-message">
-            <input type="text" placeholder="Scrivi un messaggio">
+            <input v-model="myUser.message" type="text" placeholder="Scrivi un messaggio">
           </div>
           
 
@@ -174,7 +174,7 @@
   </div>
 
 
-
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
