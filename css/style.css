@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 .clearfix::after{
@@ -26,13 +26,14 @@ body {
   display: flex;
   align-items: center;
   height: 100%;
-  min-width: 800px;
 }
 
 .container {
   width: 70%;
   height: 95vh;
   margin: auto;
+  min-width: 800px;
+  overflow: hidden;
   background-color: white; /*DA TOGLIERE*/
 }
 
@@ -175,8 +176,8 @@ body {
 /*List User*/
 .container .left .list-user{
   height: calc(100% - 70px - 60px - 40px);
-  width: 95%;
-  border-right: 1px solid rgba(0, 0, 0, .1);  
+  width: 100%;
+  overflow-y: scroll;
 }
 
 .container .left .list-user .box-user {
@@ -233,10 +234,11 @@ body {
 
 .container .left .list-user .box-user:hover{
   cursor: pointer;
+  background-color: #E9EAEA;
 }
 
 .container .left .list-user .box-user.active{
-  background-color: #E9EAEA;
+  background-color: #53535342;
 }
 
 
@@ -294,9 +296,10 @@ body {
 
 
 .container .right .chat .message .content {
+  position: relative;
   width: 45%;
   background-color: white;
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
 }
 

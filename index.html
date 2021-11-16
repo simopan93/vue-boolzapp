@@ -12,6 +12,8 @@
   <div id="app">
     <div class="container cleafix">
 
+      <!-- LEFT -->
+
       <!-- List Chat -->
       <div class="left">
 
@@ -60,7 +62,10 @@
         <!--List User-->
         <section  class="list-user">
 
-          <div v-for="(el,index) in users" class="box-user active">
+          <div v-for="(el,index) in users"
+          class="box-user"
+          :class = "{'active':(index===activeChat)}"
+          @click="activeChat=index">
 
             <div class="box-avatar-other-user">
               <img :src= el.avatar alt="">
@@ -68,32 +73,14 @@
 
             <div class="box-name">
               <h4>{{el.name}}</h4>
-              <p>{{el.lastMessage}}</p>
+              <p>{{el.messages[el.messages.length-1].message}}</p>
 
             </div>
 
             <div class="box-date">
-              <span>{{el.dateLastMessage}}</span>
+              <span>{{el.messages[el.messages.length-1].date}}</span>
             </div>
           </div>
-
-
-
-          <!-- <div class="box-user">
-            <div class="box-avatar-other-user">
-              <img src="img/avatar_1.jpg" alt="">
-            </div>
-
-            <div class="box-name">
-              <h4>Michele</h4>
-              <p>Tutto Fatto</p>
-
-            </div>
-
-            <div class="box-date">
-              <span>10/01/2020 14:25:45</span>
-            </div>
-          </div> -->
 
         </section>
 
@@ -109,10 +96,10 @@
         <section class="box-user">
 
           <div class="box-avatar">
-            <img :src="myUser.avatar" alt="">
+            <img :src="users[activeChat].avatar" alt="">
             <div class="box-text">
-              <h5>{{myUser.name}}</h5>
-              <p>Ultimo accesso oggi alle 14:59</p>
+              <h5>{{users[activeChat].name}}</h5>
+              <p>Ultimo accesso {{users[activeChat].messages[0].date}}</p>
             </div>
           </div> 
 
@@ -128,20 +115,16 @@
 
         <!--Chat-->
         <section class="chat clearfix">
-          <div class="message received">
+          <div v-for="(singleMessage,index) in users[activeChat].messages"
+          class="message"
+          :class="{'received' : singleMessage.status === 'received', 'sent' : singleMessage.status === 'sent'}">
             <div class="content">
-              <span>Ciao, Come Stai</span>
-              <span class="date">10/05/2021 14:45</span>
+              <span>{{singleMessage.message}}</span>
+              <span class="date">{{singleMessage.date}}</span>
             </div>
               
           </div>
 
-          <div class="message sent">
-            <div class="content">
-              <span>Ciao, Come Stai</span>
-              <span class="date">10/05/2021 14:45</span>
-            </div>
-        </div>
 
         </section>
 
