@@ -291,33 +291,30 @@ body {
 .container .right .chat .message {
   position: relative;
   display: flex;
+  justify-content: right;
   width: 100%;
   margin: 5px 0;
 }
 
-/* .container .right .chat .message:last-child{
-  margin-bottom: 20px;
-} */
 
 
 .container .right .chat .message .content {
   position: relative;
   width: 45%;
-  background-color: white;
   padding: 15px;
   border-radius: 8px;
 }
 
 .container .right .chat .message.sent .content {
-  background-color: white;
+  background-color: #DCF8C6;
 }
 
 .container .right .chat .message.received {
-  justify-content: right;
+  justify-content: left;
 }
 
 .container .right .chat .message.received .content {
-  background-color: #D5FBBA;
+  background-color: white;
 }
 
 

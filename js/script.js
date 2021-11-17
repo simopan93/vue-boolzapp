@@ -130,11 +130,30 @@ const app = new Vue({
         }
         this.users[this.activeChat].messages.push(messageToPush);
         this.myUser.message="";
+
+        document.querySelector('.chat').scrollTop = 999999999999; 
+
+        setTimeout(() => {
+          console.log("Prova TimeOut");
+          this.autoMessage();
+        },1000);
+
         document.querySelector('.chat').scrollTop = 999999999999; 
 
       }
+    },
+
+
+
+    autoMessage() {
       
-      
+      let messageToPush = {
+        date: '15/20/2020 22:50:00',
+        message: "ok",
+        status: 'received'
+      }
+      this.users[this.activeChat].messages.push(messageToPush);
+        this.myUser.message="";
     }
   },
 
