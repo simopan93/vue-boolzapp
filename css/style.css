@@ -282,9 +282,10 @@ body {
 
 /* Chat  */
 .container .right .chat {
+  overflow-y: scroll;
   height: calc(100% - 70px - 60px);
   background-image: url(../img/mine.jpg);
-  padding: 30px;
+  padding: 0 30px;
 }
 
 .container .right .chat .message {
@@ -293,6 +294,10 @@ body {
   width: 100%;
   margin: 5px 0;
 }
+
+/* .container .right .chat .message:last-child{
+  margin-bottom: 20px;
+} */
 
 
 .container .right .chat .message .content {

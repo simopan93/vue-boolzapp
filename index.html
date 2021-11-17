@@ -136,7 +136,10 @@
           </div>
 
           <div class="box-input-message">
-            <input v-model="myUser.message" type="text" placeholder="Scrivi un messaggio">
+            <input v-model="myUser.message"
+            @keyup.enter=pushMessage(myUser.message)
+            type="text"
+            placeholder="Scrivi un messaggio">
           </div>
           
 

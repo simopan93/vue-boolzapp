@@ -3,6 +3,9 @@
 
 // Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all’interno del pannello della conversazione
 
+// Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
+// Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+
 const app = new Vue({
   el: "#app",
 
@@ -20,7 +23,8 @@ const app = new Vue({
         name: "Michele",
         avatar: "img/avatar_2.jpg",
 
-        messages: [{
+        messages: [
+          {
           date: '10/01/2020 15:30:55',
           message: 'Hai portato a spasso il cane?',
           status: 'sent'
@@ -112,11 +116,32 @@ const app = new Vue({
     activeChat: 0,
   },
 
+  methods: {
 
+    pushMessage(text){
+      console.log("Prova Invio");
 
+      if (!text.length == 0) {
 
+        let messageToPush = {
+          date: '15/20/2020 22:50:00',
+          message: text,
+          status: 'sent'
+        }
+        this.users[this.activeChat].messages.push(messageToPush);
+        this.myUser.message="";
+        document.querySelector('.chat').scrollTop = 999999999999; 
+
+      }
+      
+      
+    }
+  },
 
 
 
 })
+
+
+
 
