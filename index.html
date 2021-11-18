@@ -53,7 +53,11 @@
 
             <div class="box-logo-search">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                <input
+                v-model='searchUser'
+                type="text"
+                placeholder="Cerca o inizia una nuova chat"
+                @keyup='compareName'>
             </div>
 
           </div>
@@ -63,6 +67,7 @@
         <section  class="list-user">
 
           <div v-for="(el,index) in users"
+          v-if='el.visible===true'
           class="box-user"
           :class = "{'active':(index===activeChat)}"
           @click="activeChat=index">

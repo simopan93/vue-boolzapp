@@ -6,6 +6,11 @@
 // Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
 // Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
 
+// Milestone 4
+// Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+// Milestone 5 - opzionale
+// Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+
 const app = new Vue({
   el: "#app",
 
@@ -22,6 +27,7 @@ const app = new Vue({
       {
         name: "Michele",
         avatar: "img/avatar_2.jpg",
+        visible: true,
 
         messages: [
           {
@@ -48,6 +54,7 @@ const app = new Vue({
       {
         name: "Fabio",
         avatar: "img/avatar_3.jpg",
+        visible: true,
 
         messages: [{
             date: '20/03/2020 16:30:00',
@@ -73,6 +80,7 @@ const app = new Vue({
       {
         name: "Samuele",
         avatar: "img/avatar_4.jpg",
+        visible: true,
 
         messages: [{
             date: '28/03/2020 10:10:40',
@@ -98,6 +106,7 @@ const app = new Vue({
         {
         name: "Luisa",
         avatar: "img/avatar_5.jpg",
+        visible: true,
 
         messages: [{
           date: '10/01/2020 15:30:55',
@@ -114,10 +123,14 @@ const app = new Vue({
       },
     ],
     activeChat: 0,
+    searchUser:'',
   },
+
 
   methods: {
 
+
+    //Funzione per far inviare il messaggio automatico
     pushMessage(text){
       console.log("Prova Invio");
 
@@ -144,9 +157,8 @@ const app = new Vue({
     },
 
 
-
+    //Funzione per messaggio automatico
     autoMessage() {
-      
       let messageToPush = {
         date: '15/20/2020 22:50:00',
         message: "ok",
@@ -154,7 +166,22 @@ const app = new Vue({
       }
       this.users[this.activeChat].messages.push(messageToPush);
         this.myUser.message="";
-    }
+    },
+
+
+
+    /**Funzione per l'input per cercare il nome di un utente */
+    compareName() {
+      for (let user of this.users){
+        
+      if (!user.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
+        user.visible = false;
+      } else
+      {
+        user.visible = true;
+      };
+    };
+    },
   },
 
 
