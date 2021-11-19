@@ -11,6 +11,9 @@
 // Milestone 5 - opzionale
 // Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
 
+// Milestone 5 - opzionale
+// Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+
 const app = new Vue({
   el: "#app",
 
@@ -31,21 +34,24 @@ const app = new Vue({
 
         messages: [
           {
-          date: '10/01/2020 15:30:55',
+          date: '10/01/2020 15:50:00',
           message: 'Hai portato a spasso il cane?',
-          status: 'sent'
+          status: 'sent',
+          toggleChevron: false,
           },
           
           {
               date: '10/01/2020 15:50:00',
               message: 'Ricordati di dargli da mangiare',
-              status: 'sent'
+              status: 'sent',
+              toggleChevron: false,
           },
 
           {
               date: '10/01/2020 16:15:22',
               message: 'Tutto fatto!',
-              status: 'received'
+              status: 'received',
+              toggleChevron: false,
           }
         ],
       },
@@ -59,19 +65,22 @@ const app = new Vue({
         messages: [{
             date: '20/03/2020 16:30:00',
             message: 'Ciao come stai?',
-            status: 'sent'
+            status: 'sent',
+            toggleChevron: false,
           },
 
           {
             date: '20/03/2020 16:30:55',
             message: 'Bene grazie! Stasera ci vediamo?',
             status: 'received',
+            toggleChevron: false,
           },
 
           {
             date: '20/03/2020 16:35:00',
             message: 'Mi piacerebbe ma devo andare a fare la spesa.',
-            status: 'received'
+            status: 'received',
+            toggleChevron: false,
           }
         ],
       },
@@ -85,19 +94,22 @@ const app = new Vue({
         messages: [{
             date: '28/03/2020 10:10:40',
             message: 'La Marianna va in campagna',
-            status: 'received'
+            status: 'received',
+            toggleChevron: false,
             },
 
             {
             date: '28/03/2020 10:20:10',
             message: 'Sicuro di non aver sbagliato chat?',
-            status: 'sent'
+            status: 'sent',
+            toggleChevron: false,
             },
 
             {
               date: '28/03/2020 16:15:22',
               message: 'Ah scusa!',
-              status: 'received'
+              status: 'received',
+              toggleChevron: false,
           }
         ],
       },
@@ -111,19 +123,22 @@ const app = new Vue({
         messages: [{
           date: '10/01/2020 15:30:55',
           message: 'Lo sai che ha aperto una nuova pizzeria?',
-          status: 'sent'
+          status: 'sent',
+          toggleChevron: false,
             },
 
             {
               date: '10/01/2020 15:50:00',
               message: 'Si, ma preferirei andare al cinema',
-              status: 'received'
+              status: 'received',
+              toggleChevron: false,
           }
         ],
       },
     ],
     activeChat: 0,
     searchUser:'',
+    
   },
 
 
@@ -137,7 +152,7 @@ const app = new Vue({
       if (!text.length == 0) {
 
         let messageToPush = {
-          date: '15/20/2020 22:50:00',
+          date: dayjs().format("hh:mm:"),
           message: text,
           status: 'sent'
         }
@@ -160,9 +175,10 @@ const app = new Vue({
     //Funzione per messaggio automatico
     autoMessage() {
       let messageToPush = {
-        date: '15/20/2020 22:50:00',
+        date: dayjs().format("hh:mm:"),
         message: "ok",
-        status: 'received'
+        status: 'received',
+        toggleChevron: false,
       }
       this.users[this.activeChat].messages.push(messageToPush);
         this.myUser.message="";
@@ -182,7 +198,33 @@ const app = new Vue({
       };
     };
     },
+
+      /** FUnzione per cancellare un messaggio */
+      deleteMessage(index) {
+      console.log("Click Delete Intercettato");
+      this.users[this.activeChat].messages.splice(index, 1);
+    },
+
+
+
+
+    
+    // removeDropdown(){
+    //   for(let user of this.users){
+        
+    //     for (let message of user.messages){
+
+    //       if(message.toggleChevron = true){
+    //         console.log("toggleChevron", message.toggleChevron);
+    //         message.toggleChevron = false;
+    //       }
+    //     }
+    //   }
+    // }
+
   },
+
+  
 
 
 

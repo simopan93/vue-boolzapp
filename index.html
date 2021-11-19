@@ -120,12 +120,27 @@
 
         <!--Chat-->
         <section class="chat clearfix">
+        <!-- @click="removeDropdown()"--> 
+
           <div v-for="(singleMessage,index) in users[activeChat].messages"
           class="message"
           :class="{'received' : singleMessage.status === 'received', 'sent' : singleMessage.status === 'sent'}">
+
             <div class="content">
+
               <span>{{singleMessage.message}}</span>
               <span class="date">{{singleMessage.date}}</span>
+
+              <div class="dropdown"
+              @click="singleMessage.toggleChevron = !singleMessage.toggleChevron">
+
+                  <i class="fas fa-chevron-down"></i>
+                      <ul v-if='singleMessage.toggleChevron == true'>
+                        <li>Message Info</li>
+                        <li @click="deleteMessage(index)">Delete Message</li>
+                      </ul>
+              </div>
+              
             </div>
               
           </div>
@@ -167,5 +182,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="js/script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/advancedFormat.js"></script>
 </body>
 </html>

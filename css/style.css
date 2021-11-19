@@ -299,10 +299,15 @@ body {
 
 
 .container .right .chat .message .content {
+  display: flex;
   position: relative;
-  width: 45%;
-  padding: 15px;
+  max-width: 70%;
+  padding: 15px 30px 15px 15px;
   border-radius: 8px;
+}
+
+.container .right .chat .message .content .span {
+  width: 100%;
 }
 
 .container .right .chat .message.sent .content {
@@ -316,6 +321,45 @@ body {
 .container .right .chat .message.received .content {
   background-color: white;
 }
+
+.container .right .chat .message .content .dropdown {
+  position: absolute;
+  right: 10px;
+}
+
+.container .right .chat .message .content .fa-chevron-down {
+  position: absolute;
+  right: 0;
+  padding-left: 50px;
+  color: transparent;
+}
+
+.container .right .chat .message .content .fa-chevron-down:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.container .right .chat .message .content .dropdown ul {
+  position: absolute;
+  right: -40px;
+  top: 25px;
+  min-width: 150px;
+  list-style: none;
+  background-color: white;
+  color: rgba(0, 0, 0, .8);
+  border: 1px solid rgba(0, 0, 0, .3);
+  z-index: 999;
+}
+
+.container .right .chat .message .content .dropdown ul li {
+  padding: 10px;
+}
+
+.container .right .chat .message .content .dropdown ul li:hover{
+  cursor: pointer;
+  background-color: gray;
+}
+
 
 
 .container .right .chat .message span{
