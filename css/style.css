@@ -341,7 +341,6 @@ body {
 
 .container .right .chat .message .content .dropdown ul {
   position: absolute;
-  right: -40px;
   top: 25px;
   min-width: 150px;
   list-style: none;
@@ -349,6 +348,14 @@ body {
   color: rgba(0, 0, 0, .8);
   border: 1px solid rgba(0, 0, 0, .3);
   z-index: 999;
+}
+
+.container .right .chat .message.received .content .dropdown ul {
+  right: -95px;
+}
+
+.container .right .chat .message.sent .content .dropdown ul {
+  left: -125px;
 }
 
 .container .right .chat .message .content .dropdown ul li {
@@ -359,8 +366,6 @@ body {
   cursor: pointer;
   background-color: gray;
 }
-
-
 
 .container .right .chat .message span{
   font-size: 13px;

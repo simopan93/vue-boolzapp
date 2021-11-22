@@ -78,7 +78,8 @@
 
             <div class="box-name">
               <h4>{{el.name}}</h4>
-              <p>{{el.messages[el.messages.length-1].message}}</p>
+              <p 
+              v-if="el.messages[el.messages.length-1].message">{{el.messages[el.messages.length-1].message}}</p>
 
             </div>
 
@@ -120,9 +121,9 @@
 
         <!--Chat-->
         <section class="chat clearfix">
-        <!-- @click="removeDropdown()"--> 
 
           <div v-for="(singleMessage,index) in users[activeChat].messages"
+          v-if="singleMessage"
           class="message"
           :class="{'received' : singleMessage.status === 'received', 'sent' : singleMessage.status === 'sent'}">
 
@@ -132,7 +133,7 @@
               <span class="date">{{singleMessage.date}}</span>
 
               <div class="dropdown"
-              @click="singleMessage.toggleChevron = !singleMessage.toggleChevron">
+              @click="openDropdown(singleMessage)">
 
                   <i class="fas fa-chevron-down"></i>
                       <ul v-if='singleMessage.toggleChevron == true'>
@@ -180,11 +181,14 @@
   </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script src="js/script.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/advancedFormat.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/plugin/customParseFormat.min.js" integrity="sha512-nbPJ/ANJ1DCwUWGyfS+PY7RMysy5UnFyOzPTjzcphOuVbUqrukQAZ9kkNvTkPmItJRuuL5IqNufQTHPyxxpmig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="js/script.js"></script>
+
 </body>
 </html>

@@ -14,6 +14,8 @@
 // Milestone 5 - opzionale
 // Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
 
+
+
 const app = new Vue({
   el: "#app",
 
@@ -34,7 +36,8 @@ const app = new Vue({
 
         messages: [
           {
-          date: '10/01/2020 15:50:00',
+          date: dayjs('15/05/2014', 'DD/MM/YYYY').format("DD-MM-YYYY hh:mm:"),
+          // date: '10/01/2020 15:50:00',
           message: 'Hai portato a spasso il cane?',
           status: 'sent',
           toggleChevron: false,
@@ -140,6 +143,10 @@ const app = new Vue({
     searchUser:'',
     
   },
+  created() {
+
+    dayjs.extend(window.dayjs_plugin_customParseFormat);
+  },
 
 
   methods: {
@@ -154,7 +161,8 @@ const app = new Vue({
         let messageToPush = {
           date: dayjs().format("hh:mm:"),
           message: text,
-          status: 'sent'
+          status: 'sent',
+          toggleChevron: false
         }
         this.users[this.activeChat].messages.push(messageToPush);
         this.myUser.message="";
@@ -166,11 +174,25 @@ const app = new Vue({
           this.autoMessage();
         },1000);
 
-        document.querySelector('.chat').scrollTop = 999999999999; 
+        document.querySelector('.chat').scrollTop = 999999999999;
+        
+        nextTick
 
       }
     },
 
+
+    //Funzione per aprire dropdown di un singolo messaggio, per poi chiudere gli altri aperto
+    openDropdown(selectedMessage){
+      for (let user of this.users){
+        for(let message of user.messages){
+          console.log(message.toggleChevron);
+          message.toggleChevron=false;
+      }
+        }
+        selectedMessage.toggleChevron = true;
+
+    },
 
     //Funzione per messaggio automatico
     autoMessage() {
@@ -203,6 +225,7 @@ const app = new Vue({
       deleteMessage(index) {
       console.log("Click Delete Intercettato");
       this.users[this.activeChat].messages.splice(index, 1);
+      this.users[this.activeChat].messages.toggleChevron = false;
     },
 
 
